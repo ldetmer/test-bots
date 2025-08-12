@@ -9,7 +9,7 @@ steps:
     apt-get install -y git gh
     
     # Configure Git with the GitHub App token
-    git config --global url."https://x-access-token:${GH_TOKEN}@github.com".insteadOf "https://github.com"
+    git config --global url."https://x-access-token:$GH_TOKEN@github.com".insteadOf "https://github.com"
     git config --global user.email "cloud-build@example.com"
     git config --global user.name "Cloud Build"
 
