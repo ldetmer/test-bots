@@ -15,9 +15,9 @@ steps:
     # Create the pull request using the GitHub CLI or a direct API call
     # Replace with your actual GitHub App authentication method
     #gh pr create --title "Automated PR from Cloud Build" --body "This PR was created automatically by Cloud Build."
+options:
+  logging: CLOUD_LOGGING_ONLY
 availableSecrets:
 - secretManager:
     version: projects/626163762206/secrets/lauras_repo-github-oauthtoken-82060a/versions/latest
   env: '_GITHUB_TOKEN'
-options:
-  logging: CLOUD_LOGGING_ONLY
