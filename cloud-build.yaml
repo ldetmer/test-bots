@@ -8,10 +8,10 @@ steps:
     apt-get update
     apt-get install -y git gh
 
-    export GH_TOKEN=${_GH_TOKEN}
+    #export GH_TOKEN=${_GH_TOKEN}
     GH_TOKEN=${_GH_TOKEN}
     echo ${_GH_TOKEN} + "here"
-    echo $GH_TOKEN + "token 2"
+    #echo $GH_TOKEN + "token 2"
     # Configure Git with the GitHub App token
     git config --global url."https://x-access-token:${_GH_TOKEN}@github.com".insteadOf "https://github.com"
     git config --global user.email "cloud-build@example.com"
