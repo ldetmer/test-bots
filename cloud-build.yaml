@@ -10,6 +10,8 @@ steps:
 
    
     echo ${_GH_TOKEN} + "here"
+
+    echo $_GH_TOKEN + "here 2"
    
     # Configure Git with the GitHub App token
     git config --global url."https://x-access-token:${_GH_TOKEN}@github.com".insteadOf "https://github.com"
