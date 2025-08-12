@@ -7,7 +7,8 @@ steps:
     # Install GitHub CLI
     apt-get update
     apt-get install -y git gh
-    
+
+    export GH_TOKEN=${_GH_TOKEN}
     # Configure Git with the GitHub App token
     git config --global url."https://x-access-token:${_GH_TOKEN}@github.com".insteadOf "https://github.com"
     git config --global user.email "cloud-build@example.com"
@@ -28,13 +29,11 @@ steps:
 
     # Create the pull request using the GitHub CLI
     gh pr create --title "Automated PR from Cloud Build" --body "This PR was created automatically by Cloud Build."
-  secretEnv: ['GH_TOKEN', '_GH_TOKEN'] 
+  secretEnv: ['_GH_TOKEN'] 
 options:
   logging: CLOUD_LOGGING_ONLY
 
 availableSecrets:
   secretManager:
-    - versionName: projects/626163762206/secrets/lauras_repo-github-oauthtoken-82060a/versions/latest
-      env: 'GH_TOKEN'
     - versionName: projects/626163762206/secrets/lauras_repo-github-oauthtoken-82060a/versions/latest
       env: '_GH_TOKEN'
