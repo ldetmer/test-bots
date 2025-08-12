@@ -1,11 +1,13 @@
 steps:
-- name: 'gcr.io/google.com/cloudsdk/cloud-sdk'
-  entrypoint: 'bash'
+- name: 'gcr.io/google-cloud-cli/google-cloud-cli'
+  entrypoint: 'gcloud'
   args:
-  - '-c'
-  - |
-    # Test secret access
-    gcloud secrets versions access latest --secret="lauras_repo-github-oauthtoken-82060a" --project="626163762206"
+  - secrets
+  - versions
+  - access
+  - latest
+  - '--secret=lauras_repo-github-oauthtoken-82060a'
+  - '--project=626163762206'
 
 - name: 'ubuntu'
   entrypoint: 'bash'
