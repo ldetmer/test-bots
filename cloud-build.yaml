@@ -6,7 +6,7 @@ steps:
   - |
     # Install GitHub CLI
     apt-get update
-    apt-get install -y gh
+    apt-get install -y git gh
     
     # Configure Git with the GitHub App token
     git config --global url."https://x-access-token:${_GITHUB_TOKEN}@github.com".insteadOf "https://github.com"
