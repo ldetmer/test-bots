@@ -18,6 +18,6 @@ steps:
 options:
   logging: CLOUD_LOGGING_ONLY
 availableSecrets:
-- secretManager:
+  secretManager:
     version: projects/626163762206/secrets/lauras_repo-github-oauthtoken-82060a/versions/latest
   env: '_GITHUB_TOKEN'
