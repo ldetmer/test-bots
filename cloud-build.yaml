@@ -1,24 +1,37 @@
 steps:
-- name: 'gcr.io/cloud-builders/git'
+- name: 'ubuntu'
   entrypoint: 'bash'
   args:
   - '-c'
   - |
-    git config --global user.email "cloud-build@example.com"
-    git config --global user.name "Cloud Build"
+    # Install GitHub CLI
+    apt-get update
+    apt-get install -y gh
+    
     # Configure Git with the GitHub App token
     git config --global url."https://x-access-token:${_GITHUB_TOKEN}@github.com".insteadOf "https://github.com"
-    # ... your build logic that makes changes to the repository ...
+    git config --global user.email "cloud-build@example.com"
+    git config --global user.name "Cloud Build"
+
+    # Create a new file to simulate a change
     echo "Build from $(date)" > build_log.txt
+    
+    # Create a new branch
+    git checkout -b cloud-build-update
+    
+    # Stage and commit the changes
     git add .
     git commit -m "Automated changes from Cloud Build"
-    git push --set-upstream origin main
-    # Create the pull request using the GitHub CLI or a direct API call
-    # Replace with your actual GitHub App authentication method
-    #gh pr create --title "Automated PR from Cloud Build" --body "This PR was created automatically by Cloud Build."
-  secretEnv: ['_GITHUB_TOKEN']
+    
+    # Push the new branch to the remote repository
+    git push -u origin cloud-build-update
+
+    # Create the pull request using the GitHub CLI
+    gh pr create --title "Automated PR from Cloud Build" --body "This PR was created automatically by Cloud Build."
+    
 options:
   logging: CLOUD_LOGGING_ONLY
+
 availableSecrets:
   secretManager:
     - versionName: projects/626163762206/secrets/lauras_repo-github-oauthtoken-82060a/versions/latest
