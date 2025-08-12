@@ -28,7 +28,7 @@ steps:
 
     # Create the pull request using the GitHub CLI
     gh pr create --title "Automated PR from Cloud Build" --body "This PR was created automatically by Cloud Build."
-    
+  secretEnv: ['_GITHUB_TOKEN'] 
 options:
   logging: CLOUD_LOGGING_ONLY
 
