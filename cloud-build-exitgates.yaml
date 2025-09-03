@@ -31,17 +31,10 @@ steps:
         "--cache-from",
         "us-central1-docker.pkg.dev/ldetmer-sanbox/images-dev/librarian-go:latest",
         "-t",
-        "us-central1-docker.pkg.dev/ldetmer-sanbox/images-dev/librarian-go:infrastructure-public-image-$COMMIT_SHA",
+        "us-central1-docker.pkg.dev/ldetmer-sanbox/images-dev/librarian-go:latest",
         "-f",
         "Dockerfile",
         ".",
-      ]
-  - name:  gcr.io/cloud-builders/docker
-    args:
-      [
-        "tag",
-        "us-central1-docker.pkg.dev/ldetmer-sanbox/images-dev/librarian-go:infrastructure-public-image-$COMMIT_SHA",
-        "us-central1-docker.pkg.dev/ldetmer-sanbox/images-dev/librarian-go:latest",
       ]
 options:
     machineType: 'E2_HIGHCPU_8'
@@ -49,6 +42,5 @@ options:
     logging: CLOUD_LOGGING_ONLY
 
 images:
-  - us-central1-docker.pkg.dev/ldetmer-sanbox/images-dev/librarian-go:infrastructure-public-image-$COMMIT_SHA
   - us-central1-docker.pkg.dev/ldetmer-sanbox/images-dev/librarian-go:latest
 
