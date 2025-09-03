@@ -5,4 +5,4 @@ FROM alpine:latest
 WORKDIR /app
 
 # Run a simple, non-interactive command
-CMD ["echo", "Cloud Build test successful!"]
+CMD ["echo", "Cloud Build test successful with change!"]
